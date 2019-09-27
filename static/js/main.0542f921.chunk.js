@@ -1,0 +1,2 @@
+(window["webpackJsonpreact-color-palette"]=window["webpackJsonpreact-color-palette"]||[]).push([[0],[,,,function(e,n,t){e.exports=t(10)},,,,,function(e,n,t){},function(e,n,t){},function(e,n,t){"use strict";t.r(n);var o=t(0),c=t.n(o),r=t(2),a=t.n(r);t(8),t(9);var l=function(){return c.a.createElement("div",{className:"App"})};a.a.render(c.a.createElement(l,null),document.getElementById("root"))}],[[3,1,2]]]);
+//# sourceMappingURL=main.0542f921.chunk.js.map
