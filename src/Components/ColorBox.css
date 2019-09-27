@@ -6,6 +6,7 @@
   font-family: "Quicksand", sans-serif;
   position: relative;
 }
+
 .ColorBox--info {
   display: flex;
   justify-content: space-between;

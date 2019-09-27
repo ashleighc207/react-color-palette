@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 class ColorBox extends Component {
   render() {
+    const { name, color } = this.props;
     return (
-      <div className="ColorBox" style={{ backgroundColor: this.props.color }}>
+      <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
-          <span className="ColorBox--name">{this.props.name}</span>
-          <Link to={`/color/${this.props.color}`} className="ColorBox--link">
+          <span className="ColorBox--name">{name}</span>
+          <Link to={`/color/${color}`} className="ColorBox--link">
             More...
           </Link>
         </div>
