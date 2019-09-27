@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 class ColorBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      copied: false
+    };
+  }
   render() {
     const { name, color } = this.props;
     return (
@@ -14,6 +20,10 @@ class ColorBox extends Component {
             More...
           </Link>
         </div>
+        <div
+          className="ColorBox--overlay"
+          style={{ backgroundColor: color }}
+        ></div>
         <div className="ColorBox--copy_container">
           <CopyToClipboard text={color}>
             <button className="ColorBox--copy">Copy</button>
