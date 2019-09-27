@@ -1,0 +1,15 @@
+.Nav {
+  display: flex;
+  background-color: #424242;
+}
+
+.Nav--icon {
+  margin: 0px 10px;
+}
+
+.Nav--link_container {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
