@@ -12,6 +12,7 @@
   justify-content: space-between;
   padding-left: 5px;
   width: 100%;
+  align-items: flex-end;
 }
 
 .ColorBox--link {
@@ -21,29 +22,37 @@
   padding: 2px 4px;
   font-weight: 700;
   border-radius: 5px;
+  font-size: 0.8rem;
 }
 
 .ColorBox--name {
   color: #ffffff;
   font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 0.7rem;
+  padding-bottom: 4px;
 }
 
 .ColorBox--copy_container {
   position: absolute;
-  top: calc(50% - 15px);
-  left: calc(50% - 25px);
+  top: calc(50% - 14px);
+  left: calc(50% - 31px);
 }
 
 .ColorBox--copy {
-  display: none;
+  opacity: 0;
   border: none;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.3);
   color: #ffffff;
   padding: 5px 10px;
-  font-size: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  outline: none;
+  letter-spacing: 1px;
 }
 
 .ColorBox:hover .ColorBox--copy {
-  display: block;
+  transition: 0.5s;
+  opacity: 1;
 }
