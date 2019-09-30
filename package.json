@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://ashleighc207.github.io/react-color-palette/",
   "dependencies": {
+    "chroma-js": "^2.0.6",
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-copy-to-clipboard": "^5.0.1",
