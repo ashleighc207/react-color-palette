@@ -9,9 +9,17 @@ class ColorBox extends Component {
     this.state = {
       copied: false
     };
+    this.showOverlay = this.showOverlay.bind(this);
+  }
+  showOverlay() {
+    this.setState({ copied: true }, () => {
+      setTimeout(() => this.setState({ copied: false }), 1500);
+    });
   }
   render() {
     const { name, color } = this.props;
+    let visible;
+    this.state.copied ? (visible = "show") : (visible = "");
     return (
       <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
@@ -21,11 +29,16 @@ class ColorBox extends Component {
           </Link>
         </div>
         <div
-          className="ColorBox--overlay"
+          className={`ColorBox--overlay ${visible}`}
           style={{ backgroundColor: color }}
         ></div>
+        <div className={`ColorBox--overlay_text ${visible}`}>
+          <div className="ColorBox--copied_banner">Copied!</div>
+          <div className="ColorBox--copied_color">{color}</div>
+        </div>
+
         <div className="ColorBox--copy_container">
-          <CopyToClipboard text={color}>
+          <CopyToClipboard text={color} onCopy={this.showOverlay}>
             <button className="ColorBox--copy">Copy</button>
           </CopyToClipboard>
         </div>
