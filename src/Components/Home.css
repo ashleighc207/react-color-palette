@@ -1,0 +1,12 @@
+.Home {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 980px;
+}
+
+.Home a {
+  text-decoration: none;
+  color: #424242;
+}
