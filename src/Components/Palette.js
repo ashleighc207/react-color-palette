@@ -11,7 +11,7 @@ class Palette extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      level: 100,
+      level: 500,
       format: "hex",
       snackbarOpen: false
     };

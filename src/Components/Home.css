@@ -4,9 +4,30 @@
   margin: 0 auto;
   width: 100%;
   max-width: 980px;
+  flex-direction: column;
+}
+.Home--title {
+  font-family: "Quicksand", sans-serif;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  color: #212121;
+}
+
+.Home--mini_palettes {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .Home a {
   text-decoration: none;
   color: #424242;
+}
+
+@media screen and (max-width: 600px) {
+  .Home,
+  .Home--mini_palettes {
+    align-items: center;
+    justify-content: center;
+  }
 }
