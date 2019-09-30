@@ -29,7 +29,13 @@ class ColorBox extends Component {
       <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
           <span className="ColorBox--name">{this.props.name}</span>
-          <Link to={`/color/${color}`} className="ColorBox--link">
+          <Link
+            to={`/palette/${this.props.paletteName.replace(/ /g, "-")}/${
+              this.props.id
+            }`}
+            className="ColorBox--link"
+            onClick={e => e.stopPropagation()}
+          >
             More...
           </Link>
         </div>

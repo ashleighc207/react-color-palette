@@ -11,7 +11,7 @@ class Home extends Component {
         <div className="Home--mini_palettes">
           {this.props.palettes.map(p => {
             return (
-              <Link to={`/palette/${p.id}`} key={p.id}>
+              <Link to={`/palette/${p.id}/`} key={p.id}>
                 <MiniPalette {...p} />
               </Link>
             );

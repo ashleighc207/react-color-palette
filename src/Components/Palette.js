@@ -30,7 +30,14 @@ class Palette extends Component {
   }
   render() {
     const colors = this.props.palette.colors[this.state.level].map(c => {
-      return <ColorBox {...c} format={this.state.format} key={c.name} />;
+      return (
+        <ColorBox
+          {...c}
+          paletteName={this.props.palette.paletteName}
+          format={this.state.format}
+          key={c.name}
+        />
+      );
     });
     return (
       <div className="Palette">

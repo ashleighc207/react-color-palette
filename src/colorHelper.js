@@ -31,6 +31,42 @@ function generatePaletteLevels(paletteColors) {
   return adjustedPalette;
 }
 
+function generateSinglePaletteLevels(paletteColors, color) {
+  let thisColor = "";
+  paletteColors.colors.map(p => {
+    if (p.name.toLowerCase() === color) {
+      thisColor = p.color;
+    }
+  });
+
+  let adjustedPalette = {
+    paletteName: paletteColors.paletteName,
+    id: paletteColors.id,
+    emoji: paletteColors.emoji,
+    levels: levels,
+    colors: {}
+  };
+
+  for (let level of levels) {
+    adjustedPalette.colors[level] = [];
+  }
+
+  let scale = getScale(thisColor, levels.length).reverse();
+  for (let i in scale) {
+    adjustedPalette.colors[levels[i]].push({
+      name: `${color.name} ${levels[i]}`,
+      id: color.toLowerCase().replace(/ /g, "-") + "-" + i,
+      hex: scale[i],
+      rgb: chroma(scale[i]).css(),
+      rgba: chroma(scale[i])
+        .css()
+        .replace("rgb", "rgba")
+        .replace(")", ",1.0)")
+    });
+  }
+  return adjustedPalette;
+}
+
 function getRange(hexColor) {
   const endColor = "#ffffff";
   return [
@@ -49,4 +85,4 @@ function getScale(hexColor, num) {
     .colors(num);
 }
 
-export { generatePaletteLevels };
+export { generatePaletteLevels, generateSinglePaletteLevels };
