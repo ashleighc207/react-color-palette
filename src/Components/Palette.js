@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ColorBox from "./ColorBox.js";
 import "./Palette.css";
 import Nav from "./Nav.js";
+import Footer from "./Footer.js";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
@@ -62,6 +63,7 @@ class Palette extends Component {
             </IconButton>
           ]}
         />
+        <Footer palette={this.props.palette} />
       </div>
     );
   }

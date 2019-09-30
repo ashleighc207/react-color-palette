@@ -32,13 +32,13 @@ class Nav extends Component {
             />
           </div>
         </div>
-        <div>
+        <div className="Nav--select_container">
           <Select
             className="Nav--select"
             value={this.props.default}
             onChange={this.props.handleChange}
           >
-            <MenuItem value="hex">Hex - #FFFFFF</MenuItem>
+            <MenuItem value="hex">hex - #FFFFFF</MenuItem>
             <MenuItem value="rgb">rgb - rgb(255, 255, 255)</MenuItem>
             <MenuItem value="rgba">rgba - rgba(255, 255, 255, 1.0)</MenuItem>
           </Select>
