@@ -7,9 +7,18 @@ class Nav extends Component {
     return (
       <nav className="Nav">
         <Link to="/" className="Nav--link_container">
-          <i className="fa fa-paint-brush Nav--icon"></i>
           <p className="Nav--text">Color Palettes </p>
         </Link>
+        <div className="Nav--slide_container">
+          <input
+            type="range"
+            min="100"
+            max="900"
+            value="100"
+            className="Nav--slider"
+            id="shade-range"
+          />
+        </div>
       </nav>
     );
   }

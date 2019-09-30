@@ -6,10 +6,9 @@ import "./App.css";
 import { generatePaletteLevels } from "./colorHelper.js";
 
 function App() {
-  console.log(generatePaletteLevels(seedColors[0]));
   return (
     <div className="App">
-      <Palette {...seedColors[4]} />
+      <Palette palette={generatePaletteLevels(seedColors[4])} />
     </div>
   );
 }
