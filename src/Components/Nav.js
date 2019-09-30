@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import "./Nav.css";
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(evt) {
+    this.props.changeSliderLevel(evt);
+  }
   render() {
     return (
       <nav className="Nav">
@@ -14,9 +21,11 @@ class Nav extends Component {
             type="range"
             min="100"
             max="900"
-            value="100"
+            value={this.props.level}
             className="Nav--slider"
             id="shade-range"
+            step="100"
+            onChange={this.handleChange}
           />
         </div>
       </nav>
