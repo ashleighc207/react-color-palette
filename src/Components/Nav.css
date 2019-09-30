@@ -1,5 +1,18 @@
 .Nav {
   display: flex;
+  justify-content: space-between;
+}
+
+.Nav--container {
+  display: flex;
+}
+
+.Nav--select {
+  margin-right: 20px;
+}
+
+.Nav .MuiInput-underline:before {
+  border-bottom-color: #0652dd;
 }
 
 .Nav--link_container {

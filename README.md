@@ -26,6 +26,8 @@ Download or clone this repo to your machine
 - uuid
 - gh-pages
 - react-router-dom
+- material-ui
+- chroma.js
 
 ## How to Use
 

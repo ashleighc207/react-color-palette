@@ -17,28 +17,33 @@ class ColorBox extends Component {
     });
   }
   render() {
-    const { name, hex } = this.props;
+    let color;
+    this.props.format === "hex"
+      ? (color = this.props.hex)
+      : this.props.format === "rgb"
+      ? (color = this.props.rgb)
+      : (color = this.props.rgba);
     let visible;
     this.state.copied ? (visible = "show") : (visible = "");
     return (
-      <div className="ColorBox" style={{ backgroundColor: hex }}>
+      <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
-          <span className="ColorBox--name">{name}</span>
-          <Link to={`/color/${hex}`} className="ColorBox--link">
+          <span className="ColorBox--name">{this.props.name}</span>
+          <Link to={`/color/${color}`} className="ColorBox--link">
             More...
           </Link>
         </div>
         <div
           className={`ColorBox--overlay ${visible}`}
-          style={{ backgroundColor: hex }}
+          style={{ backgroundColor: color }}
         ></div>
         <div className={`ColorBox--overlay_text ${visible}`}>
           <div className="ColorBox--copied_banner">Copied!</div>
-          <div className="ColorBox--copied_color">{hex}</div>
+          <div className="ColorBox--copied_color">{color}</div>
         </div>
 
         <div className="ColorBox--copy_container">
-          <CopyToClipboard text={hex} onCopy={this.showOverlay}>
+          <CopyToClipboard text={color} onCopy={this.showOverlay}>
             <button className="ColorBox--copy">Copy</button>
           </CopyToClipboard>
         </div>
