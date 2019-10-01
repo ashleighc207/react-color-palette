@@ -19,3 +19,12 @@
   font-weight: 700;
   font-size: 14px;
 }
+
+.SinglePalette--go_back {
+  border: none;
+  background: none;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #212121;
+}
