@@ -14,7 +14,7 @@ class SinglePalette extends Component {
             className="SinglePalette--go_back"
             onClick={this.props.history.goBack}
           >
-            Go Back
+            <i className="fas fa-chevron-left SinglePalette--icon"></i> Go Back
           </button>
         </div>
         <div className="SinglePalette--color_container">
