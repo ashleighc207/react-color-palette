@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "33cb697c1b78cad514f0bb14f1d0ee69",
+    "revision": "ea2c7891940444986ef60c7e12a015b4",
     "url": "/react-color-palette/index.html"
   },
   {
-    "revision": "0539fa7f63bcae28eb00",
-    "url": "/react-color-palette/static/css/main.bb8ee88d.chunk.css"
+    "revision": "d76662963081418871f6",
+    "url": "/react-color-palette/static/css/main.566cb218.chunk.css"
   },
   {
     "revision": "8a2027a9e7ff3f3b8f86",
     "url": "/react-color-palette/static/js/2.c6b69d0e.chunk.js"
   },
   {
-    "revision": "0539fa7f63bcae28eb00",
-    "url": "/react-color-palette/static/js/main.b376ebeb.chunk.js"
+    "revision": "d76662963081418871f6",
+    "url": "/react-color-palette/static/js/main.0ea060fd.chunk.js"
   },
   {
     "revision": "bbf89240a26eb752908e",
