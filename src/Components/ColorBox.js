@@ -24,22 +24,25 @@ class ColorBox extends Component {
       ? (color = this.props.rgb)
       : (color = this.props.rgba);
     let visible;
+
     this.state.copied ? (visible = "show") : (visible = "");
     let format = this.props.format;
     return (
       <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
           <span className="ColorBox--name">{this.props.name}</span>
-          <Link
-            to={`/palette/${this.props.paletteName.replace(/ /g, "-")}/${
-              this.props.id
-            }/${this.props.format}`}
-            className="ColorBox--link"
-            onClick={e => e.stopPropagation()}
-            format={format}
-          >
-            More...
-          </Link>
+          {!this.props.singlePalette && (
+            <Link
+              to={`/palette/${this.props.paletteName.replace(/ /g, "-")}/${
+                this.props.id
+              }/${this.props.format}`}
+              className="ColorBox--link"
+              onClick={e => e.stopPropagation()}
+              format={format}
+            >
+              More...
+            </Link>
+          )}
         </div>
         <div
           className={`ColorBox--overlay ${visible}`}

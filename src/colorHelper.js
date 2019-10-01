@@ -55,7 +55,7 @@ function generateSinglePaletteLevels(paletteColors, color, format) {
   let scale = getScale(thisColor, levels.length).reverse();
   for (let i in scale) {
     adjustedPalette.colors[levels[i]].push({
-      name: `${color.name} ${levels[i]}`,
+      name: `${color} ${levels[i]}`,
       id: color.toLowerCase().replace(/ /g, "-") + "-" + i,
       hex: scale[i],
       rgb: chroma(scale[i]).css(),

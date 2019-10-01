@@ -1,11 +1,11 @@
-.SinglePalette {
+.SinglePalette--color_container {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
   height: 100vh;
 }
 
-.SinglePalette--color {
+.SinglePalette--color_container .ColorBox {
   width: 20%;
   height: 50%;
   display: flex;
