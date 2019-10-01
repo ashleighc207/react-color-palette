@@ -31,7 +31,7 @@ function generatePaletteLevels(paletteColors) {
   return adjustedPalette;
 }
 
-function generateSinglePaletteLevels(paletteColors, color) {
+function generateSinglePaletteLevels(paletteColors, color, format) {
   let thisColor = "";
   paletteColors.colors.map(p => {
     if (p.name.toLowerCase() === color) {
@@ -44,6 +44,7 @@ function generateSinglePaletteLevels(paletteColors, color) {
     id: paletteColors.id,
     emoji: paletteColors.emoji,
     levels: levels,
+    format: format,
     colors: {}
   };
 

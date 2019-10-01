@@ -1,4 +1,21 @@
 .SinglePalette {
-  width: 100px;
-  height: 200px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+
+.SinglePalette--color {
+  width: 20%;
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.SinglePalette--text {
+  margin: 0 0 5px 10px;
+  color: #ffffff;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
 }

@@ -32,15 +32,16 @@ class App extends Component {
                 )}
               />
             )}
-          />{" "}
+          />
           <Route
             exact
-            path="/palette/:paletteId/:color"
+            path="/palette/:paletteId/:color/:format"
             render={routeProps => (
               <SinglePalette
                 palette={generateSinglePaletteLevels(
                   this.findPalette(routeProps.match.params.paletteId),
-                  routeProps.match.params.color
+                  routeProps.match.params.color,
+                  routeProps.match.params.format
                 )}
               />
             )}

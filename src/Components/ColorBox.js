@@ -25,6 +25,7 @@ class ColorBox extends Component {
       : (color = this.props.rgba);
     let visible;
     this.state.copied ? (visible = "show") : (visible = "");
+    let format = this.props.format;
     return (
       <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
@@ -32,9 +33,10 @@ class ColorBox extends Component {
           <Link
             to={`/palette/${this.props.paletteName.replace(/ /g, "-")}/${
               this.props.id
-            }`}
+            }/${this.props.format}`}
             className="ColorBox--link"
             onClick={e => e.stopPropagation()}
+            format={format}
           >
             More...
           </Link>
