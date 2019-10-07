@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    backgroundColor: "#C4C4C4"
+    backgroundColor: "#E4E4E4"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -35,7 +35,8 @@ const useStyles = makeStyles(theme => ({
     })
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
+    color: "#424242"
   },
   hide: {
     display: "none"
@@ -56,12 +57,12 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
+    width: "100%"
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
@@ -93,6 +94,11 @@ const useStyles = makeStyles(theme => ({
     width: "90%",
     justifyContent: "space-between",
     display: "flex"
+  },
+  mainContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 }));
 
@@ -100,7 +106,7 @@ function PaletteForm() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [currentColor, setColor] = React.useState("cornflowerblue");
-  const [colors, setNewColor] = React.useState(["purple", "#e15764"]);
+  const [colors, setNewColor] = React.useState([]);
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -188,6 +194,22 @@ function PaletteForm() {
         })}
       >
         <div className={classes.drawerHeader} />
+        <div className={classes.mainContainer}>
+          {colors.length > 0 &&
+            colors.map(color => (
+              <div
+                className={classes.newColorBox}
+                style={{ backgroundColor: color }}
+              >
+                <p>{color}</p>
+              </div>
+            ))}
+          {colors.length === 0 && (
+            <h1 className={classes.heading}>
+              To get started, add colors using the color picker
+            </h1>
+          )}
+        </div>
       </main>
     </div>
   );
