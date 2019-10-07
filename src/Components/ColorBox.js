@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./ColorBox.css";
 import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import chroma from "chroma-js";
 
 class ColorBox extends Component {
   constructor(props) {
@@ -23,20 +24,24 @@ class ColorBox extends Component {
       : this.props.format === "rgb"
       ? (color = this.props.rgb)
       : (color = this.props.rgba);
-    let visible;
+    let visible, textColor;
+    let luminance = chroma(color).luminance();
+    luminance < 0.15 ? (textColor = "light-text") : (textColor = "dark-text");
 
     this.state.copied ? (visible = "show") : (visible = "");
     let format = this.props.format;
     return (
       <div className="ColorBox" style={{ backgroundColor: color }}>
         <div className="ColorBox--info">
-          <span className="ColorBox--name">{this.props.name}</span>
+          <span className={`ColorBox--name ${textColor}`}>
+            {this.props.name}
+          </span>
           {!this.props.singlePalette && (
             <Link
               to={`/palette/${this.props.paletteName.replace(/ /g, "-")}/${
                 this.props.id
               }/${this.props.format}`}
-              className="ColorBox--link"
+              className={`ColorBox--link ${textColor}`}
               onClick={e => e.stopPropagation()}
               format={format}
             >
@@ -49,13 +54,13 @@ class ColorBox extends Component {
           style={{ backgroundColor: color }}
         ></div>
         <div className={`ColorBox--overlay_text ${visible}`}>
-          <div className="ColorBox--copied_banner">Copied!</div>
-          <div className="ColorBox--copied_color">{color}</div>
+          <div className={`ColorBox--copied_banner ${textColor}`}>Copied!</div>
+          <div className={`ColorBox--copied_color ${textColor}`}>{color}</div>
         </div>
 
         <div className="ColorBox--copy_container">
           <CopyToClipboard text={color} onCopy={this.showOverlay}>
-            <button className="ColorBox--copy">Copy</button>
+            <button className={`ColorBox--copy ${textColor}`}>Copy</button>
           </CopyToClipboard>
         </div>
       </div>

@@ -114,6 +114,14 @@
   font-weight: 500;
 }
 
+.dark-text {
+  color: #212121;
+}
+
+.light-text {
+  color: #ffffff;
+}
+
 @media screen and (max-width: 600px) {
   .ColorBox {
     width: 100%;
