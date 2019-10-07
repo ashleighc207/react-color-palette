@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
+    backgroundColor: "#C4C4C4"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -68,13 +69,37 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  heading: {
+    fontSize: "22px",
+    fontFamily: "Quicksand, sans-serif",
+    fontWeight: 700,
+    color: "#212121",
+    marginTop: "30px",
+    marginBottom: "20px"
+  },
+  drawerContents: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column"
+  },
+  chromePicker: {
+    margin: "40px 0px"
+  },
+  addButton: {
+    width: "80%"
+  },
+  buttonsContainer: {
+    width: "90%",
+    justifyContent: "space-between",
+    display: "flex"
   }
 }));
 
 function PaletteForm() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [currentColor, setColor] = React.useState("teal");
+  const [currentColor, setColor] = React.useState("cornflowerblue");
   const [colors, setNewColor] = React.useState(["purple", "#e15764"]);
 
   function handleDrawerOpen() {
@@ -112,9 +137,7 @@ function PaletteForm() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography>
+          <Typography variant="h6" noWrap></Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -130,27 +153,34 @@ function PaletteForm() {
           </IconButton>
         </div>
         <Divider />
-        <Typography variant="h4">Design Your Palette</Typography>
-        <div>
-          <Button variant="contained" color="primary">
-            Random Color
-          </Button>
-          <Button variant="contained" color="secondary">
-            Clear Palette
+        <div className={classes.drawerContents}>
+          <Typography variant="h4" className={classes.heading}>
+            Design Your Palette
+          </Typography>
+          <div className={classes.buttonsContainer}>
+            <Button variant="contained" color="primary">
+              Random Color
+            </Button>
+            <Button variant="contained" color="secondary">
+              Clear Palette
+            </Button>
+          </div>
+          <ChromePicker
+            color={currentColor}
+            onChangeComplete={updateCurrentColor}
+            className={classes.chromePicker}
+            width="90%"
+          />
+          <Button
+            className={classes.addButton}
+            variant="contained"
+            color="primary"
+            style={{ backgroundColor: currentColor }}
+            onClick={addNewColor}
+          >
+            Add Color
           </Button>
         </div>
-        <ChromePicker
-          color={currentColor}
-          onChangeComplete={updateCurrentColor}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          style={{ backgroundColor: currentColor }}
-          onClick={addNewColor}
-        >
-          Add Color
-        </Button>
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -158,10 +188,6 @@ function PaletteForm() {
         })}
       >
         <div className={classes.drawerHeader} />
-
-        {colors.map(color => (
-          <li style={{ backgroundColor: color }}>{color}</li>
-        ))}
       </main>
     </div>
   );
