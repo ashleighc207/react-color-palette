@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Palette from "./Components/Palette.js";
 import PaletteForm from "./Components/PaletteForm.js";
+import Error from "./Components/Error.js";
 import seedColors from "./Models/seedColors.js";
 import "./App.css";
 import {
@@ -48,6 +49,7 @@ class App extends Component {
             )}
           />
           <Route exact path="/new-palette" render={() => <PaletteForm />} />
+          <Route render={() => <Error />} />
         </Switch>
       </div>
     );
