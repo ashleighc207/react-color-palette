@@ -7,7 +7,12 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <h1 className="Home--title">React Color Palettes</h1>
+        <div className="Home--nav">
+          <h1 className="Home--title">React Color Palettes</h1>
+          <Link to="/new-palette" className="Home--link">
+            <i className="fas fa-plus"></i>
+          </Link>
+        </div>
         <div className="Home--mini_palettes">
           {this.props.palettes.map(p => {
             return (

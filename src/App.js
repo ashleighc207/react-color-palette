@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Palette from "./Components/Palette.js";
+import PaletteForm from "./Components/PaletteForm.js";
 import seedColors from "./Models/seedColors.js";
 import "./App.css";
 import {
@@ -46,6 +47,7 @@ class App extends Component {
               />
             )}
           />
+          <Route exact path="/new-palette" render={() => <PaletteForm />} />
         </Switch>
       </div>
     );

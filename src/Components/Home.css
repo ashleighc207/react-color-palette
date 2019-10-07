@@ -11,7 +11,7 @@
   margin-left: 30px;
   margin-bottom: 40px;
   margin-top: 40px;
-  color: #212121;
+  color: #1b3191;
 }
 
 .Home--mini_palettes {
@@ -22,6 +22,31 @@
 .Home a {
   text-decoration: none;
   color: #424242;
+}
+
+.Home--nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Home .Home--link {
+  margin-right: 110px;
+  font-family: "Quicksand", sans-serif;
+  background: #1b3191;
+  color: #ffffff;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 2px 5px rgba(33, 33, 33, 0.5);
+  transition: all 0.2s ease-in;
+}
+.Home .Home--link:hover {
+  opacity: 0.8;
+  box-shadow: 1px 2px 8px rgba(33, 33, 33, 0.5);
 }
 
 @media screen and (max-width: 600px) {
