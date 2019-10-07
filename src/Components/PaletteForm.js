@@ -12,6 +12,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
 import { ChromePicker } from "react-color";
+import chroma from "chroma-js";
 
 const drawerWidth = 350;
 
@@ -76,8 +77,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Quicksand, sans-serif",
     fontWeight: 700,
     color: "#212121",
-    marginTop: "30px",
-    marginBottom: "20px"
+    margin: "30px auto 20px auto"
   },
   drawerContents: {
     display: "flex",
@@ -90,23 +90,54 @@ const useStyles = makeStyles(theme => ({
   addButton: {
     width: "80%"
   },
-  buttonsContainer: {
+  buttonContainer: {
     width: "90%",
-    justifyContent: "space-between",
+    justifyContent: "center",
     display: "flex"
   },
   mainContainer: {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
+    flexWrap: "wrap",
+    height: "100vh",
+    textAlign: "center",
+    alignContent: "flex-start"
+  },
+  newColorBox: {
+    width: "20%",
+    height: "20%",
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "space-between"
+  },
+  newColorBoxText: {
+    fontFamily: "Quicksand",
+    marginLeft: "10px",
+    marginBottom: "5px"
+  },
+  newColorBoxIcon: {
+    fontSize: "12px",
+    marginBottom: "5px",
+    marginRight: "10px",
+    lineHeight: "1.5"
+  },
+  lightText: {
+    color: "#ffffff"
+  },
+  darkText: {
+    color: "#212121"
   }
 }));
 
 function PaletteForm() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("cornflowerblue");
   const [colors, setNewColor] = React.useState([]);
+  let luminance = chroma(currentColor).luminance();
+  let textColor;
+  luminance < 0.15
+    ? (textColor = classes.lightText)
+    : (textColor = classes.darkText);
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -163,10 +194,7 @@ function PaletteForm() {
           <Typography variant="h4" className={classes.heading}>
             Design Your Palette
           </Typography>
-          <div className={classes.buttonsContainer}>
-            <Button variant="contained" color="primary">
-              Random Color
-            </Button>
+          <div className={classes.buttonContainer}>
             <Button variant="contained" color="secondary">
               Clear Palette
             </Button>
@@ -178,7 +206,7 @@ function PaletteForm() {
             width="90%"
           />
           <Button
-            className={classes.addButton}
+            className={[classes.addButton, textColor].join(" ")}
             variant="contained"
             color="primary"
             style={{ backgroundColor: currentColor }}
@@ -201,7 +229,12 @@ function PaletteForm() {
                 className={classes.newColorBox}
                 style={{ backgroundColor: color }}
               >
-                <p>{color}</p>
+                <p className={[classes.newColorBoxText, textColor].join(" ")}>
+                  {color}
+                </p>
+                <i
+                  className={`fas fa-trash-alt ${classes.newColorBoxIcon} ${textColor}`}
+                ></i>
               </div>
             ))}
           {colors.length === 0 && (
