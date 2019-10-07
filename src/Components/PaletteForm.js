@@ -131,7 +131,7 @@ const useStyles = makeStyles(theme => ({
 function PaletteForm() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [currentColor, setColor] = React.useState("cornflowerblue");
+  const [currentColor, setColor] = React.useState("#32607C");
   const [colors, setNewColor] = React.useState([]);
   let luminance = chroma(currentColor).luminance();
   let textColor;
