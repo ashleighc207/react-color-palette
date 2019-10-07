@@ -98,13 +98,13 @@ const useStyles = makeStyles(theme => ({
   mainContainer: {
     display: "flex",
     flexWrap: "wrap",
-    height: "100vh",
+    height: "calc(100vh - 64px)",
     textAlign: "center",
     alignContent: "flex-start"
   },
   newColorBox: {
     width: "20%",
-    height: "20%",
+    height: "25%",
     display: "flex",
     alignItems: "flex-end",
     justifyContent: "space-between"
