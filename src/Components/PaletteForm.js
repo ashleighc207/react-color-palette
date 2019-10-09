@@ -15,6 +15,7 @@ import { ChromePicker } from "react-color";
 import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/PaletteFormStyles.js";
+import PaletteBox from "./PaletteBox.js";
 
 function PaletteForm() {
   const classes = useStyles();
@@ -113,17 +114,11 @@ function PaletteForm() {
         <div className={classes.mainContainer}>
           {colors.length > 0 &&
             colors.map(color => (
-              <div
-                className={classes.newColorBox}
-                style={{ backgroundColor: color }}
-              >
-                <p className={[classes.newColorBoxText, textColor].join(" ")}>
-                  {color}
-                </p>
-                <i
-                  className={`fas fa-trash-alt ${classes.newColorBoxIcon} ${textColor}`}
-                ></i>
-              </div>
+              <PaletteBox
+                color={color}
+                classes={classes}
+                textColor={textColor}
+              />
             ))}
           {colors.length === 0 && (
             <h1 className={classes.heading}>
