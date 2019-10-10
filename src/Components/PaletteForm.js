@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -29,6 +29,14 @@ function PaletteForm() {
     ? (textColor = classes.lightText)
     : (textColor = classes.darkText);
 
+  useEffect(() => {
+    ValidatorForm.addValidationRule("isUnique", value => {
+      colors.filter(color => {
+        return value != color.name;
+      });
+    });
+  }, []);
+
   function handleDrawerOpen() {
     setOpen(true);
   }
@@ -42,7 +50,10 @@ function PaletteForm() {
   }
 
   function addNewColor() {
-    setNewColor(oldColors => [...oldColors, currentColor]);
+    const newColor = { name: newName, color: currentColor };
+    setNewColor(oldColors => [...oldColors, newColor]);
+    setNewName("");
+    document.getElementById("colorName").value = "";
   }
 
   function addName(e) {
@@ -99,22 +110,29 @@ function PaletteForm() {
             className={classes.chromePicker}
             width="90%"
           />
-          <ValidatorForm className={classes.form}>
+          <ValidatorForm className={classes.form} onSubmit={addNewColor}>
             <TextValidator
               label="Color Name"
               onChange={addName}
               className={classes.textInput}
+              id="colorName"
+              validators={["required", "isUnique"]}
+              errorMessages={[
+                "Color name is required",
+                "Color name must be unique"
+              ]}
+              variant="outlined"
             />
+            <Button
+              className={[classes.addButton, textColor].join(" ")}
+              variant="contained"
+              color="primary"
+              style={{ backgroundColor: currentColor }}
+              type="submit"
+            >
+              Add Color
+            </Button>
           </ValidatorForm>
-          <Button
-            className={[classes.addButton, textColor].join(" ")}
-            variant="contained"
-            color="primary"
-            style={{ backgroundColor: currentColor }}
-            onClick={addNewColor}
-          >
-            Add Color
-          </Button>
         </div>
       </Drawer>
       <main
@@ -127,9 +145,11 @@ function PaletteForm() {
           {colors.length > 0 &&
             colors.map(color => (
               <PaletteBox
-                color={color}
+                color={color.color}
                 classes={classes}
                 textColor={textColor}
+                key={color.name}
+                name={color.name}
               />
             ))}
           {colors.length === 0 && (
