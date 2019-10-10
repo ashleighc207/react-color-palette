@@ -22,6 +22,7 @@ function PaletteForm() {
   const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("#32607C");
   const [colors, setNewColor] = React.useState([]);
+  const [newName, setNewName] = React.useState();
   let luminance = chroma(currentColor).luminance();
   let textColor;
   luminance < 0.15
@@ -42,6 +43,10 @@ function PaletteForm() {
 
   function addNewColor() {
     setNewColor(oldColors => [...oldColors, currentColor]);
+  }
+
+  function addName(e) {
+    setNewName(e.target.value);
   }
 
   return (
@@ -94,6 +99,13 @@ function PaletteForm() {
             className={classes.chromePicker}
             width="90%"
           />
+          <ValidatorForm className={classes.form}>
+            <TextValidator
+              label="Color Name"
+              onChange={addName}
+              className={classes.textInput}
+            />
+          </ValidatorForm>
           <Button
             className={[classes.addButton, textColor].join(" ")}
             variant="contained"

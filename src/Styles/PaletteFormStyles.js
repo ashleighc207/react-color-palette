@@ -110,6 +110,13 @@ const useStyles = makeStyles(theme => ({
   },
   darkText: {
     color: "#212121"
+  },
+  textInput: {
+    marginBottom: "2rem",
+    width: "100%"
+  },
+  form: {
+    width: "80%"
   }
 }));
 export default useStyles;
