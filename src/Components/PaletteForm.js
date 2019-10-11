@@ -69,6 +69,10 @@ function PaletteForm(props) {
     setNewName(e.target.value);
   }
 
+  function clearPalette() {
+    setNewColor([]);
+  }
+
   function handleClick() {
     const newPalette = {
       paletteName: "New Test Palette",
@@ -127,7 +131,11 @@ function PaletteForm(props) {
             Design Your Palette
           </Typography>
           <div className={classes.buttonContainer}>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={clearPalette}
+            >
               Clear Palette
             </Button>
           </div>
