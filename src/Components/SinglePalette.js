@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import "./SinglePalette.css";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import ColorBox from "./ColorBox.js";
 
 class SinglePalette extends Component {
   render() {
-    const { palette } = this.props.palette;
-
     return (
       <div className="SinglePlaette">
         <div className="SinglePalette--back">

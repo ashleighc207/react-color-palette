@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -22,7 +21,8 @@ function PaletteForm() {
   const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("#32607C");
   const [colors, setNewColor] = React.useState([]);
-  const [newName, setNewName] = React.useState();
+  const [newName, setNewName] = React.useState("");
+  const [value, setNewValue] = React.useState();
   let luminance = chroma(currentColor).luminance();
   let textColor;
   luminance < 0.15
@@ -31,11 +31,14 @@ function PaletteForm() {
 
   useEffect(() => {
     ValidatorForm.addValidationRule("isUnique", value => {
-      colors.filter(color => {
-        return value != color.name;
-      });
+      return colors.length > 0
+        ? colors.every(color => {
+            console.log(color, value);
+            return value.toLowerCase() !== color.name.toLowerCase();
+          })
+        : true;
     });
-  }, []);
+  }, [colors, currentColor]);
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -110,7 +113,11 @@ function PaletteForm() {
             className={classes.chromePicker}
             width="90%"
           />
-          <ValidatorForm className={classes.form} onSubmit={addNewColor}>
+          <ValidatorForm
+            className={classes.form}
+            onSubmit={addNewColor}
+            instantValidation={false}
+          >
             <TextValidator
               label="Color Name"
               onChange={addName}
@@ -122,6 +129,7 @@ function PaletteForm() {
                 "Color name must be unique"
               ]}
               variant="outlined"
+              value={newName}
             />
             <Button
               className={[classes.addButton, textColor].join(" ")}

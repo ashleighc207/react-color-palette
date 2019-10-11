@@ -33,7 +33,7 @@ function generatePaletteLevels(paletteColors) {
 
 function generateSinglePaletteLevels(paletteColors, color, format) {
   let thisColor = "";
-  paletteColors.colors.map(p => {
+  paletteColors.colors.forEach(p => {
     if (p.name.toLowerCase() === color) {
       thisColor = p.color;
     }
