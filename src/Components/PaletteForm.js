@@ -14,7 +14,8 @@ import { ChromePicker } from "react-color";
 import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/PaletteFormStyles.js";
-import PaletteBox from "./PaletteBox.js";
+import PaletteBoxList from "./PaletteBoxList.js";
+import { arrayMove } from "react-sortable-hoc";
 
 function PaletteForm(props) {
   const classes = useStyles();
@@ -55,6 +56,10 @@ function PaletteForm(props) {
 
   function handleDrawerOpen() {
     setOpen(true);
+  }
+
+  function onSortEnd({ oldIndex, newIndex }) {
+    setNewColor(colors => arrayMove(colors, oldIndex, newIndex));
   }
 
   function handleDrawerClose() {
@@ -213,17 +218,16 @@ function PaletteForm(props) {
       >
         <div className={classes.drawerHeader} />
         <div className={classes.mainContainer}>
-          {colors.length > 0 &&
-            colors.map(color => (
-              <PaletteBox
-                color={color.color}
-                classes={classes}
-                textColor={textColor}
-                key={color.name}
-                name={color.name}
-                delete={() => deleteColor(color.name)}
-              />
-            ))}
+          {colors.length > 0 && (
+            <PaletteBoxList
+              colors={colors}
+              classes={classes}
+              textColor={textColor}
+              deleteColor={deleteColor}
+              axis="xy"
+              onSortEnd={onSortEnd}
+            />
+          )}
           {colors.length === 0 && (
             <h1 className={classes.heading}>
               To get started, add colors using the color picker
