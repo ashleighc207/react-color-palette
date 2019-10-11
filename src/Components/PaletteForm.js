@@ -16,7 +16,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/PaletteFormStyles.js";
 import PaletteBox from "./PaletteBox.js";
 
-function PaletteForm() {
+function PaletteForm(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("#32607C");
@@ -69,6 +69,16 @@ function PaletteForm() {
     setNewName(e.target.value);
   }
 
+  function handleClick() {
+    const newPalette = {
+      paletteName: "New Test Palette",
+      id: "new-test-palette",
+      colors: colors
+    };
+    props.savePalette(newPalette);
+    props.history.push("/");
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -92,6 +102,8 @@ function PaletteForm() {
             variant="contained"
             color="primary"
             className={classes.saveButton}
+            onClick={handleClick}
+            disabled={colors.length === 0}
           >
             Save Palette
           </Button>

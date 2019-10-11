@@ -12,7 +12,9 @@ const styles = {
     padding: "20px 10px",
     boxShadow:
       "2px 2px 5px 0px rgba(33, 33, 33, 0.3), 1px 1px 8px 0px rgba(33, 33, 33, 0.3)",
-    margin: "15px"
+    margin: "15px",
+    alignItems: "flex-start",
+    minHeight: "175px"
   },
   MiniPaletteBoxes: {
     display: "flex",

@@ -13,17 +13,31 @@ import Home from "./Components/Home.js";
 import SinglePalette from "./Components/SinglePalette.js";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.savePalette = this.savePalette.bind(this);
+    this.findPalette = this.findPalette.bind(this);
+    this.state = { palettes: seedColors };
+  }
   findPalette(id) {
-    return seedColors.find(function(palette) {
+    return this.state.palettes.find(function(palette) {
       return palette.id === id.toLowerCase();
     });
+  }
+  savePalette(palette) {
+    console.log(this.state.palettes);
+    this.setState({ palettes: [...this.state.palettes, palette] });
   }
 
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={() => <Home palettes={seedColors} />} />
+          <Route
+            exact
+            path="/"
+            render={() => <Home palettes={this.state.palettes} />}
+          />
           <Route
             exact
             path="/palette/:id"
@@ -48,7 +62,13 @@ class App extends Component {
               />
             )}
           />
-          <Route exact path="/new-palette" render={() => <PaletteForm />} />
+          <Route
+            exact
+            path="/new-palette"
+            render={routeProps => (
+              <PaletteForm savePalette={this.savePalette} {...routeProps} />
+            )}
+          />
           <Route render={() => <Error />} />
         </Switch>
       </div>
