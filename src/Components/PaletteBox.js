@@ -8,6 +8,7 @@ class PaletteBox extends Component {
         <p className={[classes.newColorBoxText, textColor].join(" ")}>{name}</p>
         <i
           className={`fas fa-trash-alt ${classes.newColorBoxIcon} ${textColor}`}
+          onClick={this.props.delete}
         ></i>
       </div>
     );

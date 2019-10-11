@@ -46,7 +46,6 @@ function PaletteForm(props) {
         : true;
     });
     ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
-      console.log(props.palettes, "props");
       return props.palettes.length > 0
         ? props.palettes.every(palette => {
             return palette.paletteName !== value;
@@ -73,7 +72,11 @@ function PaletteForm(props) {
     setnewColorName("");
     document.getElementById("colorName").value = "";
   }
-
+  function deleteColor(colorName) {
+    setNewColor(oldColors =>
+      oldColors.filter(color => color.name !== colorName)
+    );
+  }
   function addName(e) {
     setnewColorName(e.target.value);
   }
@@ -216,6 +219,7 @@ function PaletteForm(props) {
                 textColor={textColor}
                 key={color.name}
                 name={color.name}
+                delete={() => deleteColor(color.name)}
               />
             ))}
           {colors.length === 0 && (

@@ -3,7 +3,6 @@ import chroma from "chroma-js";
 const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 function generatePaletteLevels(paletteColors) {
-  console.log(paletteColors);
   let adjustedPalette = {
     paletteName: paletteColors.paletteName,
     id: paletteColors.id,
@@ -15,7 +14,6 @@ function generatePaletteLevels(paletteColors) {
     adjustedPalette.colors[level] = [];
   }
   for (let color of paletteColors.colors) {
-    console.log(color, "colorr");
     let scale = getScale(color.color, levels.length).reverse();
     for (let i in scale) {
       adjustedPalette.colors[levels[i]].push({
@@ -71,7 +69,6 @@ function generateSinglePaletteLevels(paletteColors, color, format) {
 }
 
 function getRange(hexColor) {
-  console.log(hexColor);
   const endColor = "#ffffff";
   return [
     chroma(hexColor)
