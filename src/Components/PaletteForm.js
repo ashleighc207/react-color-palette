@@ -23,7 +23,6 @@ function PaletteForm(props) {
   const [colors, setNewColor] = React.useState([]);
   const [newColorName, setnewColorName] = React.useState("");
   const [newPaletteName, setNewPaletteName] = React.useState("");
-  const [value, setNewValue] = React.useState();
   let luminance = chroma(currentColor).luminance();
   let textColor;
   luminance < 0.15
@@ -52,7 +51,7 @@ function PaletteForm(props) {
           })
         : true;
     });
-  }, [colors, currentColor]);
+  }, [colors, currentColor, props.palettes]);
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -196,10 +195,13 @@ function PaletteForm(props) {
               className={[classes.addButton, textColor].join(" ")}
               variant="contained"
               color="primary"
-              style={{ backgroundColor: currentColor }}
+              style={{
+                backgroundColor: colors.length === 20 ? "#C4C4C4" : currentColor
+              }}
               type="submit"
+              disabled={colors.length === 20}
             >
-              Add Color
+              {colors.length === 20 ? "Palette is Full" : "Add Color"}
             </Button>
           </ValidatorForm>
         </div>
