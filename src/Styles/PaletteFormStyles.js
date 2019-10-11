@@ -92,7 +92,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: "wrap",
     height: "calc(100vh - 64px)",
     textAlign: "center",
-    alignContent: "flex-start"
+    alignContent: "flex-start",
+    width: "100%"
   },
   newColorBox: {
     width: "20%",
