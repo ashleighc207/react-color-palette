@@ -14,18 +14,22 @@ const styles = {
       "2px 2px 5px 0px rgba(33, 33, 33, 0.3), 1px 1px 8px 0px rgba(33, 33, 33, 0.3)",
     margin: "15px",
     alignItems: "flex-start",
-    minHeight: "175px"
+    height: "200px"
   },
   MiniPaletteBoxes: {
     display: "flex",
     flexWrap: "wrap",
     maxWidth: "250px",
     borderRadius: "5px",
-    overflow: "hidden"
+    overflow: "hidden",
+    backgroundColor: "#C4C4C4",
+    height: "100vh",
+    alignItems: "flex-start",
+    width: "100%"
   },
   MiniPaletteBox: {
-    height: "30px",
-    width: "50px"
+    height: "25%",
+    width: "20%"
   },
   MiniPaletteInfo: {
     display: "flex",

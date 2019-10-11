@@ -21,7 +21,8 @@ function PaletteForm(props) {
   const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("#32607C");
   const [colors, setNewColor] = React.useState([]);
-  const [newName, setNewName] = React.useState("");
+  const [newColorName, setnewColorName] = React.useState("");
+  const [newPaletteName, setNewPaletteName] = React.useState("");
   const [value, setNewValue] = React.useState();
   let luminance = chroma(currentColor).luminance();
   let textColor;
@@ -44,6 +45,14 @@ function PaletteForm(props) {
           })
         : true;
     });
+    ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
+      console.log(props.palettes, "props");
+      return props.palettes.length > 0
+        ? props.palettes.every(palette => {
+            return palette.paletteName !== value;
+          })
+        : true;
+    });
   }, [colors, currentColor]);
 
   function handleDrawerOpen() {
@@ -59,24 +68,28 @@ function PaletteForm(props) {
   }
 
   function addNewColor() {
-    const newColor = { name: newName, color: currentColor };
+    const newColor = { name: newColorName, color: currentColor };
     setNewColor(oldColors => [...oldColors, newColor]);
-    setNewName("");
+    setnewColorName("");
     document.getElementById("colorName").value = "";
   }
 
   function addName(e) {
-    setNewName(e.target.value);
+    setnewColorName(e.target.value);
   }
 
   function clearPalette() {
     setNewColor([]);
   }
 
-  function handleClick() {
+  function addPaletteName(e) {
+    setNewPaletteName(e.target.value);
+  }
+
+  function handleSubmit() {
     const newPalette = {
-      paletteName: "New Test Palette",
-      id: "new-test-palette",
+      paletteName: newPaletteName,
+      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
       colors: colors
     };
     props.savePalette(newPalette);
@@ -102,15 +115,27 @@ function PaletteForm(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.saveButton}
-            onClick={handleClick}
-            disabled={colors.length === 0}
-          >
-            Save Palette
-          </Button>
+          <ValidatorForm onSubmit={handleSubmit}>
+            <TextValidator
+              onChange={addPaletteName}
+              value={newPaletteName}
+              label="Palette Name"
+              validators={["required", "isPaletteNameUnique"]}
+              errorMessages={[
+                "Palette name is required",
+                "Palette name must be unique"
+              ]}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.saveButton}
+              type="submit"
+              disabled={colors.length === 0}
+            >
+              Save Palette
+            </Button>
+          </ValidatorForm>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -162,7 +187,7 @@ function PaletteForm(props) {
                 "Color name must be unique"
               ]}
               variant="outlined"
-              value={newName}
+              value={newColorName}
             />
             <Button
               className={[classes.addButton, textColor].join(" ")}
