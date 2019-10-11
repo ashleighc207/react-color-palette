@@ -33,8 +33,14 @@ function PaletteForm() {
     ValidatorForm.addValidationRule("isUnique", value => {
       return colors.length > 0
         ? colors.every(color => {
-            console.log(color, value);
             return value.toLowerCase() !== color.name.toLowerCase();
+          })
+        : true;
+    });
+    ValidatorForm.addValidationRule("isColorUnique", value => {
+      return colors.length > 0
+        ? colors.every(color => {
+            return color.color !== currentColor;
           })
         : true;
     });
@@ -116,16 +122,17 @@ function PaletteForm() {
           <ValidatorForm
             className={classes.form}
             onSubmit={addNewColor}
-            instantValidation={false}
+            instantValidate={false}
           >
             <TextValidator
               label="Color Name"
               onChange={addName}
               className={classes.textInput}
               id="colorName"
-              validators={["required", "isUnique"]}
+              validators={["required", "isColorUnique", "isUnique"]}
               errorMessages={[
                 "Color name is required",
+                "Color must be unique",
                 "Color name must be unique"
               ]}
               variant="outlined"
