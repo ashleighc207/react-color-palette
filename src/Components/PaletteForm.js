@@ -88,7 +88,13 @@ function PaletteForm() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap></Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.saveButton}
+          >
+            Save Palette
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer

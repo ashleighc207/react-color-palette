@@ -10,7 +10,11 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    backgroundColor: "#E4E4E4"
+    backgroundColor: "#E4E4E4",
+    "& div": {
+      display: "flex",
+      justifyContent: "space-between"
+    }
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -18,7 +22,10 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
-    })
+    }),
+    "& div": {
+      justifyContent: "flex-end"
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
