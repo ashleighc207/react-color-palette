@@ -16,6 +16,7 @@ function PaletteForm(props) {
   const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("#32607C");
   const [colors, setNewColor] = React.useState([]);
+  const [emoji, setNewEmoji] = React.useState([]);
   const [newColorName, setnewColorName] = React.useState("");
   const [newPaletteName, setNewPaletteName] = React.useState("");
   let luminance = chroma(currentColor).luminance();
@@ -63,13 +64,27 @@ function PaletteForm(props) {
     setNewPaletteName(e.target.value);
   }
 
-  function handleSubmit() {
+  function handleSubmitNext() {
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, "-"),
       colors: colors
     };
-    props.savePalette(newPalette);
+    openEmojiModal();
+  }
+
+  function openEmojiModal() {
+    console.log("opened");
+  }
+
+  function handleSubmit() {
+    // const newPalette = {
+    //   paletteName: newPaletteName,
+    //   id: newPaletteName.toLowerCase().replace(/ /g, "-"),
+    //   colors: colors,
+    //   emoji: emoji
+    // };
+    // props.savePalette(newPalette);
     props.history.push("/");
   }
 
@@ -84,6 +99,7 @@ function PaletteForm(props) {
         addPaletteName={addPaletteName}
         classes={classes}
         palettes={props.palettes}
+        handleSubmitNext={handleSubmitNext}
       />
       <Drawer
         className={classes.drawer}

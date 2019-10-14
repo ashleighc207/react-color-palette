@@ -6,19 +6,28 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Link } from "react-router-dom";
+import Modal from "./Modal.js";
 
 class PaletteFormNav extends Component {
-  componentDidMount() {
-    ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
-      return this.props.palettes.length > 0
-        ? this.props.palettes.every(palette => {
-            return palette.paletteName !== value;
-          })
-        : true;
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false,
+      emojiOpen: false
+    };
+    this.onCloseModal = this.onCloseModal.bind(this);
+    this.onOpenModal = this.onOpenModal.bind(this);
   }
+
+  onCloseModal() {
+    this.setState({ modalOpen: false });
+  }
+
+  onOpenModal() {
+    this.setState({ modalOpen: true });
+  }
+
   render() {
     const {
       open,
@@ -27,7 +36,8 @@ class PaletteFormNav extends Component {
       colors,
       newPaletteName,
       addPaletteName,
-      classes
+      classes,
+      handleSubmitNext
     } = this.props;
     return (
       <div>
@@ -38,7 +48,7 @@ class PaletteFormNav extends Component {
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
           })}
-          color="transparent"
+          color="inherit"
         >
           <Toolbar>
             <IconButton
@@ -50,18 +60,7 @@ class PaletteFormNav extends Component {
             >
               <MenuIcon />
             </IconButton>
-            <ValidatorForm onSubmit={handleSubmit}>
-              <TextValidator
-                onChange={addPaletteName}
-                value={newPaletteName}
-                label="Palette Name"
-                validators={["required", "isPaletteNameUnique"]}
-                errorMessages={[
-                  "Palette name is required",
-                  "Palette name must be unique"
-                ]}
-              />
-            </ValidatorForm>
+
             <Link to="/" className={classes.cancelButton}>
               <Button color="primary">Cancel</Button>
             </Link>
@@ -69,12 +68,21 @@ class PaletteFormNav extends Component {
               variant="contained"
               color="primary"
               className={classes.saveButton}
-              type="submit"
+              onClick={this.onOpenModal}
               disabled={colors.length === 0}
             >
               Save Palette
             </Button>
           </Toolbar>
+          <Modal
+            handleSubmit={handleSubmit}
+            addPaletteName={addPaletteName}
+            newPaletteName={newPaletteName}
+            open={this.state.modalOpen}
+            onClose={this.onCloseModal}
+            palettes={this.props.palettes}
+            handleSubmitNext={handleSubmitNext}
+          />
         </AppBar>
       </div>
     );
