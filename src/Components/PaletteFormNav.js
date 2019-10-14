@@ -8,57 +8,48 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Modal from "./Modal.js";
-import EmojiModal from "./EmojiModal.js";
 
 class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modalOpen: false,
-      emojiOpen: false,
-      newPalette: {}
+      newPalette: {},
+      step: 0
     };
     this.onCloseModal = this.onCloseModal.bind(this);
     this.onOpenModal = this.onOpenModal.bind(this);
-    this.onOpenEmoji = this.onOpenEmoji.bind(this);
-    this.onCloseEmoji = this.onCloseEmoji.bind(this);
     this.handleSubmitNext = this.handleSubmitNext.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onCloseModal() {
-    this.setState({ modalOpen: false });
+    this.setState({ step: 0 });
   }
 
   onOpenModal() {
-    this.setState({ modalOpen: true });
-  }
-
-  onOpenEmoji() {
-    this.setState({ emojiOpen: true });
-  }
-
-  onCloseEmoji(emoji) {
-    this.setState(prevState => ({
-      newPalette: {
-        ...prevState.newPalette,
-        emoji: emoji
-      }
-    }));
-    this.setState({ emojiOpen: false });
+    this.setState({ step: 1 });
   }
 
   handleSubmitNext() {
     const newPalette = {
       paletteName: this.props.newPaletteName,
       id: this.props.newPaletteName.toLowerCase().replace(/ /g, "-"),
-      colors: this.props.colors
+      colors: this.props.colors,
+      emoji: null
     };
     this.setState({ newPalette });
-    this.onOpenEmoji();
+    this.setState({ step: 2 });
   }
 
-  handleSubmit() {
+  handleSubmit(emoji) {
+    this.setState(prevState => ({
+      newPalette: {
+        ...prevState.newPalette,
+        emoji: emoji
+      }
+    }));
+    this.setState({ step: 0 });
     this.props.handleSubmit(this.state.newPalette);
   }
 
@@ -111,16 +102,12 @@ class PaletteFormNav extends Component {
             handleSubmit={handleSubmit}
             addPaletteName={addPaletteName}
             newPaletteName={newPaletteName}
-            open={this.state.modalOpen}
+            open={this.state.step}
             onClose={this.onCloseModal}
             palettes={this.props.palettes}
             handleSubmitNext={this.handleSubmitNext}
-          />
-          <EmojiModal
-            handleSubmit={handleSubmit}
-            open={this.state.emojiOpen}
-            onClose={this.onCloseEmoji}
-            finalizePalette={this.handleSubmit}
+            step={this.state.step}
+            handleFinalizePalette={this.handleSubmit}
           />
         </AppBar>
       </div>
