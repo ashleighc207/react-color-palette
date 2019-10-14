@@ -15,9 +15,11 @@ import SinglePalette from "./Components/SinglePalette.js";
 class App extends Component {
   constructor(props) {
     super(props);
+    const localPalettes = JSON.parse(window.localStorage.getItem("palettes"));
     this.savePalette = this.savePalette.bind(this);
     this.findPalette = this.findPalette.bind(this);
-    this.state = { palettes: seedColors };
+    this.syncLocalStorage = this.syncLocalStorage.bind(this);
+    this.state = { palettes: localPalettes || seedColors };
   }
   findPalette(id) {
     return this.state.palettes.find(function(palette) {
@@ -25,8 +27,16 @@ class App extends Component {
     });
   }
   savePalette(palette) {
-    console.log(this.state.palettes);
-    this.setState({ palettes: [...this.state.palettes, palette] });
+    this.setState({ palettes: [...this.state.palettes, palette] }, () =>
+      this.syncLocalStorage()
+    );
+  }
+
+  syncLocalStorage() {
+    window.localStorage.setItem(
+      "palettes",
+      JSON.stringify(this.state.palettes)
+    );
   }
 
   render() {
