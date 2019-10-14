@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import ColorBox from "./ColorBox.js";
-import "./Palette.css";
+import styles from "../Styles/PaletteStyles.js";
 import Nav from "./Nav.js";
 import Footer from "./Footer.js";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import { withStyles } from "@material-ui/core/styles";
 
 class Palette extends Component {
   constructor(props) {
@@ -29,6 +30,8 @@ class Palette extends Component {
     this.setState({ snackbarOpen: false });
   }
   render() {
+    const { classes } = this.props;
+
     const colors = this.props.palette.colors[this.state.level].map(c => {
       return (
         <ColorBox
@@ -40,14 +43,14 @@ class Palette extends Component {
       );
     });
     return (
-      <div className="Palette">
+      <div className={classes.Palette}>
         <Nav
           level={this.state.level}
           changeSliderLevel={this.changeSliderLevel}
           handleChange={this.changeFormat}
           default={this.state.format}
         />
-        <div className="Palette--colors">{colors}</div>
+        <div className={classes.PaletteColors}>{colors}</div>
         <Snackbar
           anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           open={this.state.snackbarOpen}
@@ -75,4 +78,4 @@ class Palette extends Component {
     );
   }
 }
-export default Palette;
+export default withStyles(styles)(Palette);
