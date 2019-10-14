@@ -1,26 +1,15 @@
 import React, { Component } from "react";
 import clsx from "clsx";
-import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
-import { ChromePicker } from "react-color";
-import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import PaletteBoxList from "./PaletteBoxList.js";
-import { arrayMove } from "react-sortable-hoc";
 import { Link } from "react-router-dom";
 
 class PaletteFormNav extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
       return this.props.palettes.length > 0
@@ -49,6 +38,7 @@ class PaletteFormNav extends Component {
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
           })}
+          color="transparent"
         >
           <Toolbar>
             <IconButton

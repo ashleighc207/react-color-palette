@@ -1,21 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import clsx from "clsx";
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import Button from "@material-ui/core/Button";
-import { ChromePicker } from "react-color";
 import chroma from "chroma-js";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/PaletteFormStyles.js";
 import PaletteBoxList from "./PaletteBoxList.js";
 import { arrayMove } from "react-sortable-hoc";
-import { Link } from "react-router-dom";
 import PaletteFormNav from "./PaletteFormNav.js";
 import PaletteColorSelection from "./PaletteColorSelection.js";
 
@@ -31,23 +23,6 @@ function PaletteForm(props) {
   luminance < 0.15
     ? (textColor = classes.lightText)
     : (textColor = classes.darkText);
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isUnique", value => {
-      return colors.length > 0
-        ? colors.every(color => {
-            return value.toLowerCase() !== color.name.toLowerCase();
-          })
-        : true;
-    });
-    ValidatorForm.addValidationRule("isColorUnique", value => {
-      return colors.length > 0
-        ? colors.every(color => {
-            return color.color !== currentColor;
-          })
-        : true;
-    });
-  }, [colors, currentColor]);
 
   function handleDrawerOpen() {
     setOpen(true);
