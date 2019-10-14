@@ -16,6 +16,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/PaletteFormStyles.js";
 import PaletteBoxList from "./PaletteBoxList.js";
 import { arrayMove } from "react-sortable-hoc";
+import { Link } from "react-router-dom";
 
 function PaletteForm(props) {
   const classes = useStyles();
@@ -77,6 +78,7 @@ function PaletteForm(props) {
     document.getElementById("colorName").value = "";
   }
   function deleteColor(colorName) {
+    console.log(colorName);
     setNewColor(oldColors =>
       oldColors.filter(color => color.name !== colorName)
     );
@@ -133,6 +135,11 @@ function PaletteForm(props) {
                 "Palette name must be unique"
               ]}
             />
+            <Link to="/" className={classes.cancelButton}>
+              <Button variant="outlined" color="primary">
+                Cancel
+              </Button>
+            </Link>
             <Button
               variant="contained"
               color="primary"
@@ -223,7 +230,7 @@ function PaletteForm(props) {
               colors={colors}
               classes={classes}
               textColor={textColor}
-              deleteColor={deleteColor}
+              deleteColor={() => deleteColor}
               axis="xy"
               onSortEnd={onSortEnd}
             />

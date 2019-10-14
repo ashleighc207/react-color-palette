@@ -125,6 +125,9 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     width: "80%"
+  },
+  cancelButton: {
+    textDecoration: "none"
   }
 }));
 export default useStyles;

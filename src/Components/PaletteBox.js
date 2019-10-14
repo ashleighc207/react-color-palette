@@ -3,6 +3,7 @@ import { SortableElement } from "react-sortable-hoc";
 
 const PaletteBox = SortableElement(props => {
   const { classes, name, color, textColor } = props;
+  console.log(props.delete);
   return (
     <div className={classes.newColorBox} style={{ backgroundColor: color }}>
       <p className={[classes.newColorBoxText, textColor].join(" ")}>{name}</p>
