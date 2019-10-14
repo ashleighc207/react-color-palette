@@ -61,19 +61,19 @@ class PaletteFormNav extends Component {
                   "Palette name must be unique"
                 ]}
               />
-              <Link to="/" className={classes.cancelButton}>
-                <Button color="primary">Cancel</Button>
-              </Link>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.saveButton}
-                type="submit"
-                disabled={colors.length === 0}
-              >
-                Save Palette
-              </Button>
             </ValidatorForm>
+            <Link to="/" className={classes.cancelButton}>
+              <Button color="primary">Cancel</Button>
+            </Link>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.saveButton}
+              type="submit"
+              disabled={colors.length === 0}
+            >
+              Save Palette
+            </Button>
           </Toolbar>
         </AppBar>
       </div>

@@ -127,7 +127,11 @@ const useStyles = makeStyles(theme => ({
     width: "80%"
   },
   cancelButton: {
-    textDecoration: "none"
+    textDecoration: "none",
+    marginRight: "40px"
+  },
+  saveButton: {
+    marginRight: "40px"
   }
 }));
 export default useStyles;
