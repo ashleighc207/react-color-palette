@@ -47,6 +47,7 @@ function Modal(props) {
         open={step === 2}
         className={classes.dialog}
       >
+        <DialogTitle id="simple-dialog-title">Save New Palette</DialogTitle>
         <Picker set="apple" onSelect={setEmoji} />
         <Button
           variant="contained"

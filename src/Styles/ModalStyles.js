@@ -6,9 +6,12 @@ const useStyles = makeStyles(theme => ({
     "& .MuiDialog-paperWidthSm": {
       width: "30%",
       minHeight: "250px",
+      maxHeight: "600px",
+      height: "auto",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center"
+      alignItems: "center",
+      transition: "all 0.3s linear"
     },
     "& form": {
       width: "80%",
@@ -24,7 +27,8 @@ const useStyles = makeStyles(theme => ({
   nextButton: {
     margin: "0 auto",
     marginTop: "30px",
-    width: "150px"
+    width: "150px",
+    marginBottom: "40px"
   }
 }));
 export default useStyles;

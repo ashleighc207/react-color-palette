@@ -80,7 +80,8 @@ const useStyles = makeStyles(theme => ({
     margin: "40px 0px"
   },
   addButton: {
-    width: "100%"
+    width: "100%",
+    marginTop: "30px"
   },
   buttonContainer: {
     width: "90%",
