@@ -21,6 +21,15 @@ class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
+      return this.props.palettes.length > 0
+        ? this.props.palettes.every(palette => {
+            return palette.paletteName !== value;
+          })
+        : true;
+    });
+  }
   render() {
     const {
       open,

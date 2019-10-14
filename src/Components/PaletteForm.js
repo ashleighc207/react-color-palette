@@ -46,14 +46,7 @@ function PaletteForm(props) {
           })
         : true;
     });
-    ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
-      return props.palettes.length > 0
-        ? props.palettes.every(palette => {
-            return palette.paletteName !== value;
-          })
-        : true;
-    });
-  }, [colors, currentColor, props.palettes]);
+  }, [colors, currentColor]);
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -78,7 +71,6 @@ function PaletteForm(props) {
     document.getElementById("colorName").value = "";
   }
   function deleteColor(colorName) {
-    console.log(colorName);
     setNewColor(oldColors =>
       oldColors.filter(color => color.name !== colorName)
     );
@@ -115,6 +107,7 @@ function PaletteForm(props) {
         newPaletteName={newPaletteName}
         addPaletteName={addPaletteName}
         classes={classes}
+        palettes={props.palettes}
       />
       <Drawer
         className={classes.drawer}
