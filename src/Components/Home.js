@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette.js";
-import "./Home.css";
+import styles from "../Styles/HomeStyles.js";
+import { withStyles } from "@material-ui/core/styles";
 
 class Home extends Component {
   constructor(props) {
@@ -12,15 +13,16 @@ class Home extends Component {
     this.props.deletePalette(id);
   }
   render() {
+    const { classes } = this.props;
     return (
-      <div className="Home">
-        <div className="Home--nav">
-          <h1 className="Home--title">React Color Palettes</h1>
-          <Link to="/new-palette" className="Home--link">
+      <div className={classes.Home}>
+        <div className={classes.HomeNav}>
+          <h1 className={classes.HomeTitle}>React Color Palettes</h1>
+          <Link to="/new-palette" className={classes.HomeLink}>
             <i className="fas fa-plus"></i>
           </Link>
         </div>
-        <div className="Home--mini_palettes">
+        <div className={classes.HomeMiniPalettes}>
           {this.props.palettes.map(p => {
             return (
               <Link to={`/palette/${p.id}/`} key={p.id}>
@@ -33,4 +35,4 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+export default withStyles(styles)(Home);
