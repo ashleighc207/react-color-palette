@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Nav.css";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import styles from "../Styles/NavStyles.js";
+import { withStyles } from "@material-ui/core/styles";
 
 class Nav extends Component {
   constructor(props) {
@@ -13,28 +14,29 @@ class Nav extends Component {
     this.props.changeSliderLevel(evt);
   }
   render() {
+    const { classes } = this.props;
+
     return (
-      <nav className="Nav">
-        <div className="Nav--container">
-          <Link to="/" className="Nav--link_container">
-            <p className="Nav--text">Color Palettes </p>
+      <nav className={classes.Nav}>
+        <div className={classes.NavContainer}>
+          <Link to="/" className={classes.NavLinkContainer}>
+            <p>Color Palettes </p>
           </Link>
-          <div className="Nav--slide_container">
+          <div>
             <input
               type="range"
               min="100"
               max="900"
               value={this.props.level}
-              className="Nav--slider"
               id="shade-range"
               step="100"
               onChange={this.handleChange}
             />
           </div>
         </div>
-        <div className="Nav--select_container">
+        <div className={classes.NavSelectContainer}>
           <Select
-            className="Nav--select"
+            className={classes.NavSelect}
             value={this.props.default}
             onChange={this.props.handleChange}
           >
@@ -47,4 +49,4 @@ class Nav extends Component {
     );
   }
 }
-export default Nav;
+export default withStyles(styles)(Nav);
