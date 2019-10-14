@@ -8,15 +8,15 @@ import Button from "@material-ui/core/Button";
 
 function Modal(props) {
   const classes = useStyles();
-  const { onClose, open } = props;
+  const { onClose, open, handleSubmitNext } = props;
 
   const handleClose = () => {
     onClose();
   };
 
   const handleSubmit = () => {
-    props.onClose();
-    props.handleSubmitNext();
+    onClose();
+    handleSubmitNext();
   };
 
   useEffect(() => {

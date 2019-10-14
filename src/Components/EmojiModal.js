@@ -5,20 +5,19 @@ import Typography from "@material-ui/core/Typography";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/ModalStyles.js";
 import Button from "@material-ui/core/Button";
-import classes from "./Styles/ModalStyles.js";
+import classes from "../Styles/ModalStyles.js";
 
 function EmojiModal(props) {
   const classes = useStyles();
-  // const { onClose, open } = props;
-  //
-  // const handleClose = () => {
-  //   onClose();
-  // };
-  //
-  // const handleSubmit = () => {
-  //   props.onClose();
-  //   props.handleSubmitNext();
-  // };
+  const { onClose, open, finalizePalette } = props;
+  const handleClose = () => {
+    onClose();
+  };
+
+  const handleSubmit = () => {
+    onClose();
+    finalizePalette();
+  };
 
   return (
     <Dialog
@@ -33,9 +32,9 @@ function EmojiModal(props) {
         variant="contained"
         color="primary"
         className={classes.nextButton}
-        type="submit"
+        onClick={handleSubmit}
       >
-        Next
+        Save Palette
       </Button>
     </Dialog>
   );

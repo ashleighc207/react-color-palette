@@ -64,27 +64,9 @@ function PaletteForm(props) {
     setNewPaletteName(e.target.value);
   }
 
-  function handleSubmitNext() {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-      colors: colors
-    };
-    openEmojiModal();
-  }
-
-  function openEmojiModal() {
-    console.log("opened");
-  }
-
-  function handleSubmit() {
-    // const newPalette = {
-    //   paletteName: newPaletteName,
-    //   id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-    //   colors: colors,
-    //   emoji: emoji
-    // };
-    // props.savePalette(newPalette);
+  function handleSubmit(newPalette) {
+    console.log(newPalette);
+    props.savePalette(newPalette);
     props.history.push("/");
   }
 
@@ -99,7 +81,6 @@ function PaletteForm(props) {
         addPaletteName={addPaletteName}
         classes={classes}
         palettes={props.palettes}
-        handleSubmitNext={handleSubmitNext}
       />
       <Drawer
         className={classes.drawer}
