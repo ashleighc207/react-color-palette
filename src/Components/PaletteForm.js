@@ -17,6 +17,7 @@ import PaletteBoxList from "./PaletteBoxList.js";
 import { arrayMove } from "react-sortable-hoc";
 import { Link } from "react-router-dom";
 import PaletteFormNav from "./PaletteFormNav.js";
+import PaletteColorSelection from "./PaletteColorSelection.js";
 
 function PaletteForm(props) {
   const classes = useStyles();
@@ -122,58 +123,17 @@ function PaletteForm(props) {
           </IconButton>
         </div>
         <Divider />
-        <div className={classes.drawerContents}>
-          <Typography variant="h4" className={classes.heading}>
-            Design Your Palette
-          </Typography>
-          <div className={classes.buttonContainer}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={clearPalette}
-            >
-              Clear Palette
-            </Button>
-          </div>
-          <ChromePicker
-            color={currentColor}
-            onChangeComplete={updateCurrentColor}
-            className={classes.chromePicker}
-            width="90%"
-          />
-          <ValidatorForm
-            className={classes.form}
-            onSubmit={addNewColor}
-            instantValidate={false}
-          >
-            <TextValidator
-              label="Color Name"
-              onChange={addName}
-              className={classes.textInput}
-              id="colorName"
-              validators={["required", "isColorUnique", "isUnique"]}
-              errorMessages={[
-                "Color name is required",
-                "Color must be unique",
-                "Color name must be unique"
-              ]}
-              variant="outlined"
-              value={newColorName}
-            />
-            <Button
-              className={[classes.addButton, textColor].join(" ")}
-              variant="contained"
-              color="primary"
-              style={{
-                backgroundColor: colors.length === 20 ? "#C4C4C4" : currentColor
-              }}
-              type="submit"
-              disabled={colors.length === 20}
-            >
-              {colors.length === 20 ? "Palette is Full" : "Add Color"}
-            </Button>
-          </ValidatorForm>
-        </div>
+        <PaletteColorSelection
+          classes={classes}
+          clearPalette={clearPalette}
+          currentColor={currentColor}
+          updateCurrentColor={updateCurrentColor}
+          addNewColor={addNewColor}
+          addName={addName}
+          newColorName={newColorName}
+          colors={colors}
+          textColor={textColor}
+        />
       </Drawer>
       <main
         className={clsx(classes.content, {
