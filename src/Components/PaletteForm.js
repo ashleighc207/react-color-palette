@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import clsx from "clsx";
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -17,6 +16,7 @@ import useStyles from "../Styles/PaletteFormStyles.js";
 import PaletteBoxList from "./PaletteBoxList.js";
 import { arrayMove } from "react-sortable-hoc";
 import { Link } from "react-router-dom";
+import PaletteFormNav from "./PaletteFormNav.js";
 
 function PaletteForm(props) {
   const classes = useStyles();
@@ -107,51 +107,15 @@ function PaletteForm(props) {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <ValidatorForm onSubmit={handleSubmit}>
-            <TextValidator
-              onChange={addPaletteName}
-              value={newPaletteName}
-              label="Palette Name"
-              validators={["required", "isPaletteNameUnique"]}
-              errorMessages={[
-                "Palette name is required",
-                "Palette name must be unique"
-              ]}
-            />
-            <Link to="/" className={classes.cancelButton}>
-              <Button variant="outlined" color="primary">
-                Cancel
-              </Button>
-            </Link>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.saveButton}
-              type="submit"
-              disabled={colors.length === 0}
-            >
-              Save Palette
-            </Button>
-          </ValidatorForm>
-        </Toolbar>
-      </AppBar>
+      <PaletteFormNav
+        open={open}
+        handleDrawerOpen={handleDrawerOpen}
+        handleSubmit={handleSubmit}
+        colors={colors}
+        newPaletteName={newPaletteName}
+        addPaletteName={addPaletteName}
+        classes={classes}
+      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
