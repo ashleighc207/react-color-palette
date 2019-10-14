@@ -11,14 +11,17 @@ import "emoji-mart/css/emoji-mart.css";
 function Modal(props) {
   const classes = useStyles();
   const { onClose, step, handleSubmitNext, handleFinalizePalette } = props;
-
+  let emoji;
   const handleClose = () => {
     onClose();
   };
 
+  const setEmoji = e => {
+    emoji = e.native;
+  };
+
   const handleSubmit = () => {
-    handleFinalizePalette();
-    console.log("test");
+    handleFinalizePalette(emoji);
     onClose();
   };
 
@@ -44,7 +47,7 @@ function Modal(props) {
         open={step === 2}
         className={classes.dialog}
       >
-        <Picker set="apple" />
+        <Picker set="apple" onSelect={setEmoji} />
         <Button
           variant="contained"
           color="primary"

@@ -35,22 +35,24 @@ class PaletteFormNav extends Component {
     const newPalette = {
       paletteName: this.props.newPaletteName,
       id: this.props.newPaletteName.toLowerCase().replace(/ /g, "-"),
-      colors: this.props.colors,
-      emoji: null
+      colors: this.props.colors
     };
     this.setState({ newPalette });
     this.setState({ step: 2 });
   }
 
-  handleSubmit(emoji) {
-    this.setState(prevState => ({
-      newPalette: {
-        ...prevState.newPalette,
-        emoji: emoji
+  handleSubmit(emojiNative) {
+    let updatedPalette = { ...this.state.newPalette };
+    updatedPalette.emoji = emojiNative;
+    this.setState(
+      {
+        newPalette: updatedPalette,
+        step: 0
+      },
+      () => {
+        this.props.handleSubmit(this.state.newPalette);
       }
-    }));
-    this.setState({ step: 0 });
-    this.props.handleSubmit(this.state.newPalette);
+    );
   }
 
   render() {
