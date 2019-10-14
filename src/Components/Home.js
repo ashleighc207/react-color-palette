@@ -4,6 +4,13 @@ import MiniPalette from "./MiniPalette.js";
 import "./Home.css";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+  handleDelete(id) {
+    this.props.deletePalette(id);
+  }
   render() {
     return (
       <div className="Home">
@@ -17,7 +24,7 @@ class Home extends Component {
           {this.props.palettes.map(p => {
             return (
               <Link to={`/palette/${p.id}/`} key={p.id}>
-                <MiniPalette {...p} />
+                <MiniPalette {...p} deletePalette={this.handleDelete} />
               </Link>
             );
           })}

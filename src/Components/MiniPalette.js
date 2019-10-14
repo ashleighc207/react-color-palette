@@ -14,7 +14,27 @@ const styles = {
       "2px 2px 5px 0px rgba(33, 33, 33, 0.3), 1px 1px 8px 0px rgba(33, 33, 33, 0.3)",
     margin: "15px",
     alignItems: "flex-start",
-    height: "200px"
+    height: "200px",
+    position: "relative",
+    "& i": {
+      position: "absolute",
+      top: "0px",
+      right: "0px",
+      width: "40px",
+      height: "40px",
+      borderRadius: "3px 8px 3px 3px",
+      backgroundColor: "#aa3333",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "#ffffff",
+      opacity: "0",
+      zIndex: "25",
+      transition: "all 0.3s ease-in"
+    },
+    "&:hover i": {
+      opacity: "1"
+    }
   },
   MiniPaletteBoxes: {
     display: "flex",
@@ -49,10 +69,19 @@ const styles = {
 };
 
 class MiniPalette extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e) {
+    e.preventDefault();
+    this.props.deletePalette(this.props.id);
+  }
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.MiniPalette}>
+        <i className="fas fa-trash-alt" onClick={this.handleClick}></i>
         <div className={classes.MiniPaletteBoxes}>
           {this.props.colors.map(c => {
             return (

@@ -18,6 +18,7 @@ class App extends Component {
     const localPalettes = JSON.parse(window.localStorage.getItem("palettes"));
     this.savePalette = this.savePalette.bind(this);
     this.findPalette = this.findPalette.bind(this);
+    this.deletePalette = this.deletePalette.bind(this);
     this.syncLocalStorage = this.syncLocalStorage.bind(this);
     this.state = { palettes: localPalettes || seedColors };
   }
@@ -29,6 +30,16 @@ class App extends Component {
   savePalette(palette) {
     this.setState({ palettes: [...this.state.palettes, palette] }, () =>
       this.syncLocalStorage()
+    );
+  }
+  deletePalette(paletteId) {
+    this.setState(
+      {
+        palettes: this.state.palettes.filter(p => {
+          return p.id !== paletteId;
+        })
+      },
+      () => this.syncLocalStorage()
     );
   }
 
@@ -46,7 +57,12 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <Home palettes={this.state.palettes} />}
+            render={() => (
+              <Home
+                palettes={this.state.palettes}
+                deletePalette={this.deletePalette}
+              />
+            )}
           />
           <Route
             exact
