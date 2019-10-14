@@ -45,7 +45,7 @@ class ColorBox extends Component {
               to={`/palette/${this.props.paletteName.replace(/ /g, "-")}/${
                 this.props.id
               }/${this.props.format}`}
-              className={`${classes.ColorBoxLink} ${textColor}`}
+              className={classes.ColorBoxLink}
               onClick={e => e.stopPropagation()}
               format={format}
             >
@@ -68,9 +68,7 @@ class ColorBox extends Component {
 
         <div className={classes.ColorBoxCopyContainer}>
           <CopyToClipboard text={color} onCopy={this.showOverlay}>
-            <button className={`${classes.ColorBoxCopy} ${textColor}`}>
-              Copy
-            </button>
+            <button className={classes.ColorBoxCopy}>Copy</button>
           </CopyToClipboard>
         </div>
       </div>
