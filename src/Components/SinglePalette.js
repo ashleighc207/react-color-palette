@@ -1,25 +1,31 @@
 import React, { Component } from "react";
-import "./SinglePalette.css";
+import styles from "../Styles/SinglePaletteStyles.js";
 import { withRouter } from "react-router-dom";
 import ColorBox from "./ColorBox.js";
+import { withStyles } from "@material-ui/core/styles";
 
 class SinglePalette extends Component {
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className="SinglePlaette">
-        <div className="SinglePalette--back">
+      <div className={classes.SinglePalette}>
+        <div>
           <button
-            className="SinglePalette--go_back"
+            className={classes.SinglePaletteGoBack}
             onClick={this.props.history.goBack}
           >
-            <i className="fas fa-chevron-left SinglePalette--icon"></i> Go Back
+            <i
+              className={`fas fa-chevron-left ${classes.SinglePaletteIcon}`}
+            ></i>{" "}
+            Go Back
           </button>
         </div>
-        <div className="SinglePalette--color_container">
+        <div className={classes.SinglePaletteColorContainer}>
           {this.props.palette.levels.map(l => {
             return (
               <ColorBox
-                className="SinglePalette--color"
+                className={classes.singlePalette}
                 key={l}
                 plaetteName={this.props.palette.paletteName}
                 {...this.props.palette.colors[l][0]}
@@ -33,4 +39,4 @@ class SinglePalette extends Component {
     );
   }
 }
-export default withRouter(SinglePalette);
+export default withStyles(styles)(withRouter(SinglePalette));
