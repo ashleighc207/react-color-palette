@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-import Typography from "@material-ui/core/Typography";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useStyles from "../Styles/ModalStyles.js";
 import Button from "@material-ui/core/Button";

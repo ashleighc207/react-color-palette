@@ -16,7 +16,6 @@ function PaletteForm(props) {
   const [open, setOpen] = React.useState(true);
   const [currentColor, setColor] = React.useState("#32607C");
   const [colors, setNewColor] = React.useState([]);
-  const [emoji, setNewEmoji] = React.useState([]);
   const [newColorName, setnewColorName] = React.useState("");
   const [newPaletteName, setNewPaletteName] = React.useState("");
   let luminance = chroma(currentColor).luminance();
@@ -65,7 +64,6 @@ function PaletteForm(props) {
   }
 
   function handleSubmit(newPalette) {
-    console.log(newPalette);
     props.savePalette(newPalette);
     props.history.push("/");
   }

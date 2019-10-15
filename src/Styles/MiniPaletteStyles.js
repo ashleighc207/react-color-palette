@@ -3,7 +3,6 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     width: "250px",
-    alignItems: "center",
     justifyContent: "space-between",
     borderRadius: "10px",
     padding: "20px 10px",

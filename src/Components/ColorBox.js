@@ -32,10 +32,14 @@ class ColorBox extends Component {
       ? (textColor = `${classes.lightText}`)
       : (textColor = `${classes.darkText}`);
 
-    let colorsSeen = this.state.copied
-      ? ((visible = `${classes.ColorBoxOverlayShow}`),
-        (textVisible = `${classes.ColorBoxOverlayShowText}`))
-      : ((visible = ""), (textVisible = ""));
+    if (this.state.copied) {
+      textVisible = `${classes.ColorBoxOverlayShowText}`;
+      visible = `${classes.ColorBoxOverlayShow}`;
+    } else {
+      visible = "";
+      textVisible = "";
+    }
+
     let format = this.props.format;
     return (
       <div className={classes.ColorBox} style={{ backgroundColor: color }}>

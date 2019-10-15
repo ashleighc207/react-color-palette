@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-const modalWidth = 350;
 
 const useStyles = makeStyles(theme => ({
   dialog: {

@@ -32,10 +32,6 @@ const styles = {
       marginLeft: "20px"
     },
 
-    '& input[type="range"]::-webkit-slider-thumb': {
-      "-webkit-appearance": "none"
-    },
-
     '& input[type="range"]:focus': {
       outline: "none"
     },

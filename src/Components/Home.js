@@ -53,11 +53,7 @@ class Home extends Component {
             return (
               <CSSTransition key={p.id} classNames="fade" timeout={500}>
                 <Link to={`/palette/${p.id}/`} key={p.id}>
-                  <MiniPalette
-                    {...p}
-                    // deletePalette={this.handleDelete}
-                    openDialog={this.openDialog}
-                  />
+                  <MiniPalette {...p} openDialog={this.openDialog} />
                 </Link>
               </CSSTransition>
             );
@@ -66,10 +62,9 @@ class Home extends Component {
         <Dialog
           open={this.state.deleteDialogOpen}
           className={classes.DeleteDialog}
-          aria-labelled-by="delete-dialog-title"
           onClose={this.closeDialog}
         >
-          <DialogTitle id="delete-dialog-title"> Confirm Delete </DialogTitle>
+          <DialogTitle> Confirm Delete </DialogTitle>
           <List>
             <ListItem button onClick={this.handleDelete}>
               <ListItemAvatar>
