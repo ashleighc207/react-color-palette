@@ -133,6 +133,23 @@ const useStyles = makeStyles(theme => ({
   },
   saveButton: {
     marginRight: "40px"
+  },
+  "@media screen and (max-width:600px)": {
+    drawer: {
+      width: "0%"
+    },
+    drawerPaper: {
+      width: "60%"
+    },
+    saveButton: {
+      marginRight: "-10px"
+    },
+    content: {
+      marginLeft: "0px"
+    },
+    appBarShift: {
+      marginLeft: "0px"
+    }
   }
 }));
 export default useStyles;
