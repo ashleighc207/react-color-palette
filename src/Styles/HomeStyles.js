@@ -55,6 +55,12 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center"
+  },
+  DeleteDialog: {
+    "& .MuiDialog-paperScrollPaper": {
+      width: "250px",
+      padding: "10px"
+    }
   }
 };
 
