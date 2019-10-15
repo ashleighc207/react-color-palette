@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-color-palette/static/css/main.b7f76e50.chunk.css",
-    "main.js": "/react-color-palette/static/js/main.d43ced7a.chunk.js",
-    "main.js.map": "/react-color-palette/static/js/main.d43ced7a.chunk.js.map",
+    "main.css": "/react-color-palette/static/css/main.827059ef.chunk.css",
+    "main.js": "/react-color-palette/static/js/main.9504260f.chunk.js",
+    "main.js.map": "/react-color-palette/static/js/main.9504260f.chunk.js.map",
     "runtime-main.js": "/react-color-palette/static/js/runtime-main.6dd7ba7b.js",
     "runtime-main.js.map": "/react-color-palette/static/js/runtime-main.6dd7ba7b.js.map",
     "static/css/2.b0f64131.chunk.css": "/react-color-palette/static/css/2.b0f64131.chunk.css",
-    "static/js/2.c3ed7e7b.chunk.js": "/react-color-palette/static/js/2.c3ed7e7b.chunk.js",
-    "static/js/2.c3ed7e7b.chunk.js.map": "/react-color-palette/static/js/2.c3ed7e7b.chunk.js.map",
+    "static/js/2.b5a764fc.chunk.js": "/react-color-palette/static/js/2.b5a764fc.chunk.js",
+    "static/js/2.b5a764fc.chunk.js.map": "/react-color-palette/static/js/2.b5a764fc.chunk.js.map",
     "index.html": "/react-color-palette/index.html",
-    "precache-manifest.8ac1a6ff941cedc5c20ef970d9fa15d8.js": "/react-color-palette/precache-manifest.8ac1a6ff941cedc5c20ef970d9fa15d8.js",
+    "precache-manifest.b7373638ed854006e7d6ae9de4e36f07.js": "/react-color-palette/precache-manifest.b7373638ed854006e7d6ae9de4e36f07.js",
     "service-worker.js": "/react-color-palette/service-worker.js",
     "static/css/2.b0f64131.chunk.css.map": "/react-color-palette/static/css/2.b0f64131.chunk.css.map",
-    "static/css/main.b7f76e50.chunk.css.map": "/react-color-palette/static/css/main.b7f76e50.chunk.css.map"
+    "static/css/main.827059ef.chunk.css.map": "/react-color-palette/static/css/main.827059ef.chunk.css.map"
   }
 }
