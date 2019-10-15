@@ -89,7 +89,7 @@ const styles = {
     transitionDelay: "0.3s"
   },
 
-  ColorBoxOverlayTextshow: {
+  ColorBoxOverlayShowText: {
     opacity: "1",
     zIndex: "6",
     transform: "scale(1)"

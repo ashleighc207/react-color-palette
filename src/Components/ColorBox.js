@@ -26,13 +26,16 @@ class ColorBox extends Component {
       : this.props.format === "rgb"
       ? (color = this.props.rgb)
       : (color = this.props.rgba);
-    let visible, textColor;
+    let visible, textVisible, textColor;
     let luminance = chroma(color).luminance();
     luminance < 0.15
       ? (textColor = `${classes.lightText}`)
       : (textColor = `${classes.darkText}`);
 
-    this.state.copied ? (visible = "show") : (visible = "");
+    let colorsSeen = this.state.copied
+      ? ((visible = `${classes.ColorBoxOverlayShow}`),
+        (textVisible = `${classes.ColorBoxOverlayShowText}`))
+      : ((visible = ""), (textVisible = ""));
     let format = this.props.format;
     return (
       <div className={classes.ColorBox} style={{ backgroundColor: color }}>
@@ -57,7 +60,7 @@ class ColorBox extends Component {
           className={`${classes.ColorBoxOverlay} ${visible}`}
           style={{ backgroundColor: color }}
         ></div>
-        <div className={`${classes.ColorBoxOverlayText} ${visible}`}>
+        <div className={`${classes.ColorBoxOverlayText} ${textVisible}`}>
           <div className={`${classes.ColorBoxCopiedBanner} ${textColor}`}>
             Copied!
           </div>
