@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
       alignItems: "center",
       transition: "all 0.3s linear"
     },
+    "& .emoji-mart": {
+      maxWidth: "100%"
+    },
     "& form": {
       width: "80%",
       marginTop: "20px",
@@ -29,6 +32,16 @@ const useStyles = makeStyles(theme => ({
     marginTop: "30px",
     width: "150px",
     marginBottom: "40px"
+  },
+  "@media screen and (max-width:600px)": {
+    dialog: {
+      "& .MuiDialog-paperWidthSm": {
+        width: "80%"
+      },
+      "& .emoji-mart": {
+        maxWidth: "100%"
+      }
+    }
   }
 }));
 export default useStyles;
