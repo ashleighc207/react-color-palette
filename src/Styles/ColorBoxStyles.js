@@ -59,8 +59,8 @@ const styles = {
   ColorBoxOverlay: {
     opacity: "0",
     zIndex: "0",
-    transform: "scale(0.1)",
-    transition: "transform 0.6s ease-in-out"
+    transition: "transform 0.6s ease-in-out",
+    transform: "scale(0.1)"
   },
 
   ColorBoxOverlayShow: {
@@ -85,7 +85,8 @@ const styles = {
     fontSize: "4rem",
     transform: "scale(0.1)",
     opacity: "0",
-    transition: "all 0.3s ease-in-out",
+    zIndex: "25",
+    transition: "all 0.4s ease-in-out",
     transitionDelay: "0.3s"
   },
 
@@ -124,7 +125,14 @@ const styles = {
   "@media screen and (max-width: 600px)": {
     ColorBox: {
       width: "100%",
-      height: "10%"
+      height: "20%"
+    },
+    ColorBoxOverlayShow: {
+      height: "100vh",
+      zIndex: "24"
+    },
+    ColorBoxOverlayShowText: {
+      zIndex: "25"
     }
   }
 };
