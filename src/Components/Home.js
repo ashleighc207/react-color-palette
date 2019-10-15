@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette.js";
 import styles from "../Styles/HomeStyles.js";
 import { withStyles } from "@material-ui/core/styles";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 class Home extends Component {
   constructor(props) {
@@ -22,15 +23,17 @@ class Home extends Component {
             <i className="fas fa-plus"></i>
           </Link>
         </div>
-        <div className={classes.HomeMiniPalettes}>
+        <TransitionGroup className={classes.HomeMiniPalettes}>
           {this.props.palettes.map(p => {
             return (
-              <Link to={`/palette/${p.id}/`} key={p.id}>
-                <MiniPalette {...p} deletePalette={this.handleDelete} />
-              </Link>
+              <CSSTransition key={p.id} classNames="fade" timeout={500}>
+                <Link to={`/palette/${p.id}/`} key={p.id}>
+                  <MiniPalette {...p} deletePalette={this.handleDelete} />
+                </Link>
+              </CSSTransition>
             );
           })}
-        </div>
+        </TransitionGroup>
       </div>
     );
   }
