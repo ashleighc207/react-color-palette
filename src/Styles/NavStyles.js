@@ -116,6 +116,29 @@ const styles = {
     display: "flex",
     alignItems: "center",
     marginLeft: "20px"
+  },
+  "@media screen and (max-width: 600px)": {
+    Nav: {
+      height: "30%",
+      flexDirection: "column",
+      alignItems: "center",
+      "& p": {
+        fontSize: "25px"
+      },
+      '& input[type="range"]': {
+        marginLeft: "10px"
+      }
+    },
+    NavContainer: {
+      flexDirection: "column"
+    },
+    NavLinkContainer: {
+      marginLeft: "0px"
+    },
+    NavSelectContainer: {
+      marginBottom: "20px",
+      marginLeft: "10px"
+    }
   }
 };
 
