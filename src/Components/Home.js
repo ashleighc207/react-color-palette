@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette.js";
 import styles from "../Styles/HomeStyles.js";
@@ -15,7 +15,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import { red, green } from "@material-ui/core/colors";
 
-class Home extends Component {
+class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
