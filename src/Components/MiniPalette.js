@@ -9,7 +9,7 @@ class MiniPalette extends Component {
   }
   handleClick(e) {
     e.preventDefault();
-    this.props.deletePalette(this.props.id);
+    this.props.openDialog(this.props.id);
   }
   render() {
     const { classes } = this.props;

@@ -19,9 +19,24 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
+    this.openDialog = this.openDialog.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
+    this.state = {
+      deleteDialogOpen: false,
+      currentPalette: ""
+    };
   }
-  handleDelete(id) {
-    this.props.deletePalette(id);
+
+  openDialog(id) {
+    this.setState({ deleteDialogOpen: true, currentPalette: id });
+  }
+
+  closeDialog() {
+    this.setState({ deleteDialogOpen: false });
+  }
+  handleDelete() {
+    this.props.deletePalette(this.state.currentPalette);
+    this.setState({ deleteDialogOpen: false });
   }
   render() {
     const { classes } = this.props;
@@ -38,16 +53,25 @@ class Home extends Component {
             return (
               <CSSTransition key={p.id} classNames="fade" timeout={500}>
                 <Link to={`/palette/${p.id}/`} key={p.id}>
-                  <MiniPalette {...p} deletePalette={this.handleDelete} />
+                  <MiniPalette
+                    {...p}
+                    // deletePalette={this.handleDelete}
+                    openDialog={this.openDialog}
+                  />
                 </Link>
               </CSSTransition>
             );
           })}
         </TransitionGroup>
-        <Dialog open={true} className={classes.DeleteDialog}>
-          <DialogTitle> Confirm Delete </DialogTitle>
+        <Dialog
+          open={this.state.deleteDialogOpen}
+          className={classes.DeleteDialog}
+          aria-labelled-by="delete-dialog-title"
+          onClose={this.closeDialog}
+        >
+          <DialogTitle id="delete-dialog-title"> Confirm Delete </DialogTitle>
           <List>
-            <ListItem>
+            <ListItem button onClick={this.handleDelete}>
               <ListItemAvatar>
                 <Avatar
                   style={{ backgroundColor: green[100], color: green[300] }}
@@ -57,7 +81,7 @@ class Home extends Component {
               </ListItemAvatar>
               <ListItemText style={{ fontSize: "20px" }}>Delete</ListItemText>
             </ListItem>
-            <ListItem>
+            <ListItem button onClick={this.closeDialog}>
               <ListItemAvatar>
                 <Avatar style={{ backgroundColor: red[100], color: red[300] }}>
                   <CloseIcon />
