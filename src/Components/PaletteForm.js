@@ -117,9 +117,10 @@ function PaletteForm(props) {
               colors={colors}
               classes={classes}
               textColor={textColor}
-              deleteColor={() => deleteColor}
+              deleteColor={deleteColor}
               axis="xy"
               onSortEnd={onSortEnd}
+              distance={20}
             />
           )}
           {colors.length === 0 && (
