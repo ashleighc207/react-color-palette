@@ -1,7 +1,7 @@
 const styles = {
   ColorBox: {
     width: "20%",
-    height: "25%",
+    // height: "25%",
     display: "flex",
     alignItems: "flex-end",
     fontFamily: '"Quicksand", sans-serif',
