@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import styles from "../Styles/SinglePaletteStyles.js";
+import styles from "./SinglePaletteStyles.js";
 import { withRouter } from "react-router-dom";
-import ColorBox from "./ColorBox.js";
+import { ColorBox } from "../";
 import { withStyles } from "@material-ui/core/styles";
 
 class SinglePalette extends Component {

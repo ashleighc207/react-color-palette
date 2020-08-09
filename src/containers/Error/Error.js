@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styles from "../Styles/ErrorStyles.js";
+import styles from "./ErrorStyles.js";
 import { withStyles } from "@material-ui/core/styles";
 
 class Error extends Component {

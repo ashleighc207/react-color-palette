@@ -5,11 +5,11 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import chroma from "chroma-js";
-import useStyles from "../Styles/PaletteFormStyles.js";
-import PaletteBoxList from "./PaletteBoxList.js";
+import useStyles from "./PaletteFormStyles.js";
+import { PaletteBoxList } from "../";
 import { arrayMove } from "react-sortable-hoc";
-import PaletteFormNav from "./PaletteFormNav.js";
-import PaletteColorSelection from "./PaletteColorSelection.js";
+import { PaletteFormNav } from "../";
+import { PaletteColorSelection } from "../";
 
 function PaletteForm(props) {
   const classes = useStyles();

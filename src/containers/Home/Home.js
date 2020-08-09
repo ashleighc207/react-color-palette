@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import MiniPalette from "./MiniPalette.js";
-import styles from "../Styles/HomeStyles.js";
+import { MiniPalette } from "../../components";
+import styles from "./HomeStyles.js";
 import { withStyles } from "@material-ui/core/styles";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import DialogTitle from "@material-ui/core/DialogTitle";

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import styles from "../Styles/NavStyles.js";
+import styles from "./NavStyles.js";
 import { withStyles } from "@material-ui/core/styles";
 
 class Nav extends Component {

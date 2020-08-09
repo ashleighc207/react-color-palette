@@ -1,6 +1,6 @@
 import React from "react";
 import { SortableContainer } from "react-sortable-hoc";
-import PaletteBox from "./PaletteBox.js";
+import { PaletteBox } from "../";
 
 const PaletteBoxList = SortableContainer(props => {
   return (

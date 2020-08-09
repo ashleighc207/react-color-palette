@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ColorBox from "./ColorBox.js";
-import styles from "../Styles/PaletteStyles.js";
-import Nav from "./Nav.js";
-import Footer from "./Footer.js";
+import { ColorBox } from "../";
+import styles from "./PaletteStyles.js";
+import { Nav } from "../";
+import { Footer } from "../";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";

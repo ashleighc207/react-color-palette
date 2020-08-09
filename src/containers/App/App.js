@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import Palette from "./Components/Palette.js";
-import PaletteForm from "./Components/PaletteForm.js";
-import Error from "./Components/Error.js";
-import seedColors from "./Models/seedColors.js";
+import { Palette } from "../../components";
+import { PaletteForm } from "../../components";
+import { Error } from "../";
+import seedColors from "../../utils/seedColors.js";
 import "./App.css";
 import {
   generatePaletteLevels,
   generateSinglePaletteLevels
-} from "./colorHelper.js";
+} from "../../utils/colorHelper.js";
 import { Route, Switch } from "react-router-dom";
-import Home from "./Components/Home.js";
-import SinglePalette from "./Components/SinglePalette.js";
+import { Home } from "../";
+import { SinglePalette } from "../../components";
 
 class App extends Component {
   constructor(props) {

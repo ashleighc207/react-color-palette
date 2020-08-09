@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { withStyles } from "@material-ui/styles";
-import styles from "../Styles/MiniPaletteStyles.js";
+import styles from "./MiniPaletteStyles.js";
 
 class MiniPalette extends PureComponent {
   constructor(props) {
